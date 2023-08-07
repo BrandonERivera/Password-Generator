@@ -10,30 +10,31 @@ function generatePassword()
 
   var chararray = [0,0,0,0];
 
-  var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+  var alphabets = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
-  var spchar = ["~","`","!","@","#","$","%","^","&","*","(",")","_","-","+","=",":",";","[","]","{","}","'","|",",",".","<",">","?","/"]
+  var spchar = ["~","`","!","@","#","$","%","^","&","*","(",")","_","-","+","=",":",";","[","]","{","}","'","|",",",".","<",">","?","/"];
 
-  var character
+  var character;
 
 // Other functions
 function ChooseACharacter()
 {
-  var arr = [0,1,2,3];
-  var selectedFunction = Math.floor(Math.random() * arr.length);
-  if(arr[selectedFunction] == arr[0])
+  var selectedFunction = Math.floor(Math.random() * 4);
+
+  if(selectedFunction == 0)
   {
     ChooseALowerLetter()
   }
-  if(arr[selectedFunction] == arr[1])
+  if(selectedFunction == 1)
   {
     ChooseAUpperLetter()
   }
-  if(arr[selectedFunction] == arr[2])
+  if(selectedFunction == 2)
   {
     ChooseANumber()
   }
-  else{
+  if(selectedFunction == 3)
+  {
     ChooseASpChar()
   }
 
@@ -44,29 +45,27 @@ function ChooseALowerLetter()
 {
   if(chararray[0] == "Y")
   {
-    var chosenalphabet = Math.floor(Math.random() * alphabet.length);
-    character = alphabet[chosenalphabet];
+    var chosenchar = Math.floor(Math.random() * alphabets.length);
+    character = alphabets[chosenchar];
     return character;
   }
   else
   {
     ChooseACharacter()
   }
-
 }
 function ChooseAUpperLetter()
 {
   if(chararray[1] == "Y")
   {
-    var chosenalphabet = Math.floor(Math.random() * alphabet.length);
-    character = alphabet[chosenalphabet];
-    return character.toUpperCase;
+    var chosenalphabet = Math.floor(Math.random() * alphabets.length);
+    character = alphabets[chosenalphabet].toUpperCase();
+    return character;
   }
   else
   {
     ChooseACharacter()
   }
-
 }
 function ChooseANumber()
 {
@@ -80,7 +79,6 @@ function ChooseANumber()
   {
     ChooseACharacter()
   }
-
 }
 function ChooseASpChar()
 {
@@ -128,7 +126,7 @@ function ChooseASpChar()
     }
     else
     {
-      chararray[1] = "N"
+      chararray[1] = "N";
     }
     var YNNums = window.confirm("Click OK if you would like numbers. If not click Cancel");
     if(YNNums)
@@ -138,7 +136,7 @@ function ChooseASpChar()
     }
     else
     {
-      chararray[2] = "N"
+      chararray[2] = "N";
     }
     var YNSpChar = window.confirm("Click OK if you would like Special Characters. If not click Cancel");
     if(YNSpChar)
@@ -148,7 +146,7 @@ function ChooseASpChar()
     }
     else
     {
-      chararray[3] = "N"
+      chararray[3] = "N";
     }
     if (chararray.includes("Y") != true){
       window.alert("cannot make a valid password")
@@ -160,14 +158,12 @@ function ChooseASpChar()
       {
         ChooseACharacter()
         passarr[i] = character;
-
       }
       
 
     }
   }
-
-  console.log(passarr);
+  return passarr.join("");
 }
 
 
