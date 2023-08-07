@@ -1,7 +1,8 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-function generatePassword(){
+function generatePassword()
+{
   // getting variables
   var passwordsize = window.prompt("enter length of password");
   var passarr = [];
@@ -10,6 +11,94 @@ function generatePassword(){
   var chararray = [0,0,0,0];
 
   var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+
+  var spchar = ["~","`","!","@","#","$","%","^","&","*","(",")","_","-","+","=",":",";","[","]","{","}","'","|",",",".","<",">","?","/"]
+
+  var character
+
+// Other functions
+function ChooseACharacter()
+{
+  var arr = [0,1,2,3];
+  var selectedFunction = Math.floor(Math.random() * arr.length);
+  if(arr[selectedFunction] == arr[0])
+  {
+    ChooseALowerLetter()
+  }
+  if(arr[selectedFunction] == arr[1])
+  {
+    ChooseAUpperLetter()
+  }
+  if(arr[selectedFunction] == arr[2])
+  {
+    ChooseANumber()
+  }
+  else{
+    ChooseASpChar()
+  }
+
+
+  
+
+function ChooseALowerLetter()
+{
+  if(chararray[0] == "Y")
+  {
+    var chosenalphabet = Math.floor(Math.random() * alphabet.length);
+    character = alphabet[chosenalphabet];
+    return character;
+  }
+  else
+  {
+    ChooseACharacter()
+  }
+
+}
+function ChooseAUpperLetter()
+{
+  if(chararray[1] == "Y")
+  {
+    var chosenalphabet = Math.floor(Math.random() * alphabet.length);
+    character = alphabet[chosenalphabet];
+    return character.toUpperCase;
+  }
+  else
+  {
+    ChooseACharacter()
+  }
+
+}
+function ChooseANumber()
+{
+  if(chararray[2] == "Y")
+  {
+    var chosennum = Math.floor(Math.random() * 10);
+    character = chosennum;
+    return character;
+  }
+  else
+  {
+    ChooseACharacter()
+  }
+
+}
+function ChooseASpChar()
+{
+  if(chararray[3] == "Y")
+  {
+    var chosenspchar = Math.floor(Math.random() * spchar.length);
+    character = spchar[chosenspchar];
+    return character;
+  }
+  else
+  {
+    ChooseACharacter()
+  }
+  return character;
+
+}
+
+}
 
 
 
@@ -21,7 +110,7 @@ function generatePassword(){
   }
   else
   {
-    var YNletters = window.confirm("would you like lowercase letters?");
+    var YNletters = window.confirm("Click OK if you would like lowercase letters. If not click Cancel");
     if(YNletters)
     {
       chararray[0] = "Y";
@@ -31,7 +120,7 @@ function generatePassword(){
     {
       chararray[0] = "N"
     }
-    var YNUPletters = window.confirm("would you like Uppercase letters?");
+    var YNUPletters = window.confirm("Click OK if you would like Uppercase letters. If not click Cancel");
     if(YNUPletters)
     {
       chararray[1] = "Y";
@@ -41,7 +130,7 @@ function generatePassword(){
     {
       chararray[1] = "N"
     }
-    var YNNums = window.confirm("would you like numbers?");
+    var YNNums = window.confirm("Click OK if you would like numbers. If not click Cancel");
     if(YNNums)
     {
       chararray[2] = "Y";
@@ -51,7 +140,7 @@ function generatePassword(){
     {
       chararray[2] = "N"
     }
-    var YNSpChar = window.confirm("would you like Special Characters?");
+    var YNSpChar = window.confirm("Click OK if you would like Special Characters. If not click Cancel");
     if(YNSpChar)
     {
       chararray[3] = "Y";
@@ -63,15 +152,24 @@ function generatePassword(){
     }
     if (chararray.includes("Y") != true){
       window.alert("cannot make a valid password")
-      return;
     }
     else
     {
-      
-    }
+      //This is where function will be called to replace the letter
+      for(i = 0; i < passarr.length; i++)
+      {
+        ChooseACharacter()
+        passarr[i] = character;
 
+      }
+      
+
+    }
   }
+
+  console.log(passarr);
 }
+
 
 // Write password to the #password input
 function writePassword() {
