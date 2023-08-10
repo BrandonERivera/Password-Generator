@@ -38,12 +38,9 @@ function ChooseACharacter()
     ChooseASpChar()
   }
 
-
-  
-
 function ChooseALowerLetter()
 {
-  if(chararray[0] == "Y")
+  if(chararray[0] === "Y")
   {
     var chosenchar = Math.floor(Math.random() * alphabets.length);
     character = alphabets[chosenchar];
@@ -56,7 +53,7 @@ function ChooseALowerLetter()
 }
 function ChooseAUpperLetter()
 {
-  if(chararray[1] == "Y")
+  if(chararray[1] === "Y")
   {
     var chosenalphabet = Math.floor(Math.random() * alphabets.length);
     character = alphabets[chosenalphabet].toUpperCase();
@@ -69,7 +66,7 @@ function ChooseAUpperLetter()
 }
 function ChooseANumber()
 {
-  if(chararray[2] == "Y")
+  if(chararray[2] === "Y")
   {
     var chosennum = Math.floor(Math.random() * 10);
     character = chosennum;
@@ -82,7 +79,7 @@ function ChooseANumber()
 }
 function ChooseASpChar()
 {
-  if(chararray[3] == "Y")
+  if(chararray[3] === "Y")
   {
     var chosenspchar = Math.floor(Math.random() * spchar.length);
     character = spchar[chosenspchar];
@@ -116,7 +113,7 @@ function ChooseASpChar()
     }
     else
     {
-      chararray[0] = "N"
+      chararray[0] = "N";
     }
     var YNUPletters = window.confirm("Click OK if you would like Uppercase letters. If not click Cancel");
     if(YNUPletters)
@@ -148,7 +145,7 @@ function ChooseASpChar()
     {
       chararray[3] = "N";
     }
-    if (chararray.includes("Y") != true){
+    if (chararray.includes("Y") === false){
       window.alert("cannot make a valid password")
     }
     else
@@ -159,8 +156,6 @@ function ChooseASpChar()
         ChooseACharacter()
         passarr[i] = character;
       }
-      
-
     }
   }
   return passarr.join("");
